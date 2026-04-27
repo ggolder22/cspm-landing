@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSPM — Economía Circular | Futuro Sustentable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --salvia:  #7A9171;
+  --oliva:   #4A6741;
+  --bosque:  #2D4A27;
+  --beige:   #E8E4D0;
+  --arena:   #C4B99A;
+  --blanco:  #F7F5EE;
+  --oscuro:  #1A2718;
+  --text:    #2D3A2B;
+  --muted:   #6B7A69;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--blanco);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(247,245,238,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(74,103,65,.12);transition:box-shadow .3s}
+.nav-logo{display:flex;align-items:center;gap:.7rem;font-family:'DM Mono',monospace;font-size:1.25rem;font-weight:500;color:var(--bosque);letter-spacing:.04em;text-decoration:none}
+.nav-logo svg{width:34px;height:34px}
+.nav-links{display:flex;gap:2.4rem;align-items:center}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.03em;transition:color .25s}
+.nav-links a:hover{color:var(--bosque)}
+.nav-cta{background:var(--bosque)!important;color:var(--beige)!important;padding:.55rem 1.4rem;border-radius:100px;font-weight:600!important;transition:background .25s,transform .2s!important}
+.nav-cta:hover{background:var(--oliva)!important;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 5rem;gap:4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(122,145,113,.12) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 10% 90%,rgba(196,185,154,.2) 0%,transparent 50%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,103,65,.1);border:1px solid rgba(74,103,65,.2);color:var(--oliva);padding:.4rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.8rem;width:fit-content;animation:fadeUp .7s ease both}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--salvia);animation:pulse 2s infinite}
+.hero-text{position:relative;z-index:1}
+.hero-text h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;line-height:1.1;color:var(--oscuro);animation:fadeUp .8s .1s ease both}
+.hero-text h1 em{font-style:italic;color:var(--oliva)}
+.hero-text p{margin-top:1.5rem;font-size:1.1rem;line-height:1.75;color:var(--muted);max-width:500px;animation:fadeUp .8s .2s ease both}
+.hero-actions{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;animation:fadeUp .8s .3s ease both}
+.btn-primary{background:var(--bosque);color:var(--beige);padding:.9rem 2rem;border-radius:100px;border:none;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:background .25s,transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(45,74,39,.25)}
+.btn-primary:hover{background:var(--oliva);transform:translateY(-2px);box-shadow:0 8px 30px rgba(45,74,39,.3)}
+.btn-secondary{background:transparent;color:var(--bosque);padding:.9rem 2rem;border-radius:100px;border:1.5px solid rgba(45,74,39,.3);font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .25s}
+.btn-secondary:hover{border-color:var(--oliva);background:rgba(74,103,65,.06);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid rgba(74,103,65,.15);animation:fadeUp .8s .4s ease both}
+.stat-item h3{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--bosque)}
+.stat-item p{font-size:.8rem;color:var(--muted);font-weight:500;margin-top:.2rem;letter-spacing:.03em}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;animation:fadeIn 1s .3s ease both}
+.circle-orbit{position:relative;width:480px;height:480px}
+.orbit-ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(74,103,65,.2);animation:spin 25s linear infinite}
+.orbit-ring-2{inset:40px;border-color:rgba(122,145,113,.25);animation:spin 18s linear infinite reverse}
+.center-circle{position:absolute;inset:80px;border-radius:50%;background:linear-gradient(135deg,var(--bosque),var(--oliva));display:flex;align-items:center;justify-content:center;box-shadow:0 20px 60px rgba(45,74,39,.35)}
+.center-circle svg{width:100px;height:100px}
+.orbit-node{position:absolute;width:70px;height:70px;border-radius:50%;background:var(--beige);border:2px solid rgba(74,103,65,.2);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(45,74,39,.15);font-size:1.6rem}
+.orbit-node:nth-child(3){top:-35px;left:50%;transform:translateX(-50%);animation:floatV 4s ease-in-out infinite 0s}
+.orbit-node:nth-child(4){top:50%;right:-35px;transform:translateY(-50%);animation:floatH 4s ease-in-out infinite .8s}
+.orbit-node:nth-child(5){bottom:-35px;left:50%;transform:translateX(-50%);animation:floatV 4s ease-in-out infinite 1.6s}
+.orbit-node:nth-child(6){top:50%;left:-35px;transform:translateY(-50%);animation:floatH 4s ease-in-out infinite 2.4s}
+.node-label{position:absolute;font-size:.7rem;font-weight:600;color:var(--bosque);white-space:nowrap;letter-spacing:.04em}
+.orbit-node:nth-child(3) .node-label{top:-26px;left:50%;transform:translateX(-50%)}
+.orbit-node:nth-child(4) .node-label{right:-78px;top:50%;transform:translateY(-50%)}
+.orbit-node:nth-child(5) .node-label{bottom:-26px;left:50%;transform:translateX(-50%)}
+.orbit-node:nth-child(6) .node-label{left:-88px;top:50%;transform:translateY(-50%)}
+
+/* SECTION BASE */
+section{padding:7rem 3rem}
+.section-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.75rem;color:var(--salvia);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem}
+.section-tag::before{content:'//';opacity:.5}
+h2.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:800;line-height:1.2;color:var(--oscuro)}
+h2.section-title em{color:var(--oliva);font-style:italic}
+.section-subtitle{font-size:1.05rem;line-height:1.8;color:var(--muted);max-width:580px;margin-top:1rem}
+
+/* QUIÉNES SOMOS */
+.nosotros{background:var(--beige)}
+.nosotros-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;max-width:1200px;margin:0 auto}
+.nosotros-text p{font-size:1.02rem;line-height:1.85;color:var(--muted);margin-top:1.2rem}
+.nosotros-cards{display:flex;flex-direction:column;gap:1.2rem}
+.mv-card{background:var(--blanco);border-radius:20px;padding:2rem;border:1px solid rgba(74,103,65,.1);opacity:0;transform:translateX(20px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s}
+.mv-card.visible{opacity:1;transform:translateX(0)}
+.mv-card:nth-child(2){transition-delay:.15s}
+.mv-card:nth-child(3){transition-delay:.3s}
+.mv-card:hover{box-shadow:0 12px 35px rgba(45,74,39,.1);transform:translateY(-3px)}
+.mv-label{display:inline-flex;align-items:center;gap:.5rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--blanco);background:var(--bosque);padding:.3rem .85rem;border-radius:100px;margin-bottom:1rem;font-weight:500}
+.mv-card:nth-child(2) .mv-label{background:var(--oliva)}
+.mv-card:nth-child(3) .mv-label{background:var(--salvia)}
+.mv-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--oscuro);margin-bottom:.6rem}
+.mv-card p{font-size:.9rem;line-height:1.7;color:var(--muted)}
+
+/* HISTORIA */
+.historia{background:var(--oscuro)}
+.historia-inner{max-width:860px;margin:0 auto}
+.historia .section-tag{color:var(--salvia)}
+.historia h2.section-title{color:var(--beige)}
+.historia h2.section-title em{color:var(--salvia)}
+.historia-intro{font-size:1.02rem;line-height:1.85;color:rgba(232,228,208,.6);margin-top:1.2rem;max-width:620px}
+.timeline{margin-top:4rem;display:flex;flex-direction:column;position:relative}
+.timeline::before{content:'';position:absolute;left:2.2rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--salvia) 10%,var(--oliva) 90%,transparent)}
+.tl-item{display:grid;grid-template-columns:4.5rem 1fr;gap:2rem;padding-bottom:3rem;position:relative;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.tl-item.visible{opacity:1;transform:translateY(0)}
+.tl-item:nth-child(2){transition-delay:.1s}
+.tl-item:nth-child(3){transition-delay:.2s}
+.tl-item:nth-child(4){transition-delay:.3s}
+.tl-item:nth-child(5){transition-delay:.4s}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--oliva),var(--salvia));display:flex;align-items:center;justify-content:center;font-size:1.1rem;position:relative;z-index:1;box-shadow:0 0 0 6px rgba(122,145,113,.1);flex-shrink:0}
+.tl-year{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--salvia);letter-spacing:.1em;font-weight:500;margin-bottom:.4rem;text-transform:uppercase}
+.tl-content h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--beige);margin-bottom:.5rem}
+.tl-content p{font-size:.9rem;line-height:1.7;color:rgba(232,228,208,.6)}
+
+/* PROCESO */
+.proceso{background:linear-gradient(175deg,var(--bosque) 0%,#1e3318 100%)}
+.proceso .section-tag{color:var(--salvia)}
+.proceso h2.section-title{color:var(--beige)}
+.proceso h2.section-title em{color:var(--salvia)}
+.proceso .section-subtitle{color:rgba(232,228,208,.6)}
+.proceso-header{text-align:center;max-width:680px;margin:0 auto 5rem}
+.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto}
+.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:2rem 1.8rem;opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.step.visible{opacity:1;transform:translateY(0)}
+.step:nth-child(2){transition-delay:.08s}.step:nth-child(3){transition-delay:.16s}
+.step:nth-child(4){transition-delay:.24s}.step:nth-child(5){transition-delay:.32s}
+.step:nth-child(6){transition-delay:.40s}.step:nth-child(7){transition-delay:.48s}
+.step:nth-child(8){transition-delay:.56s}.step:nth-child(9){transition-delay:.64s}
+.step:hover{background:rgba(255,255,255,.09);transform:translateY(-4px)}
+.step-head{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.step-num{width:44px;height:44px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--oliva),var(--salvia));display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:1rem;font-weight:500;color:var(--beige)}
+.step-icon{font-size:1.5rem}
+.step h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--beige)}
+.step p{font-size:.875rem;line-height:1.65;color:rgba(232,228,208,.6)}
+
+/* SERVICIOS */
+.servicios{background:var(--blanco)}
+.servicios-header{max-width:600px;margin-bottom:4rem}
+.productos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.product-card{background:var(--blanco);border-radius:24px;overflow:hidden;border:1px solid rgba(74,103,65,.1);opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease,box-shadow .3s}
+.product-card.visible{opacity:1;transform:translateY(0)}
+.product-card:nth-child(2){transition-delay:.1s}
+.product-card:nth-child(3){transition-delay:.2s}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(45,74,39,.12)}
+.card-top{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card-top-solar{background:linear-gradient(135deg,#e8f0e6,#c8d8c4)}
+.card-top-bat{background:linear-gradient(135deg,#dde8e0,#b8cdb8)}
+.card-top-luz{background:linear-gradient(135deg,#e5e8dc,#ccd4c0)}
+.card-icon-big{font-size:5rem;filter:drop-shadow(0 8px 20px rgba(45,74,39,.2))}
+.card-badge{position:absolute;top:1rem;right:1rem;background:var(--bosque);color:var(--beige);font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .85rem;border-radius:100px}
+.card-body{padding:2rem}
+.card-body h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--oscuro);margin-bottom:.6rem}
+.card-body p{font-size:.9rem;line-height:1.7;color:var(--muted)}
+.card-specs{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(74,103,65,.1);display:flex;flex-direction:column;gap:.6rem}
+.spec-row{display:flex;justify-content:space-between;align-items:center}
+.spec-row span:first-child{font-size:.8rem;color:var(--muted);font-weight:500}
+.spec-row span:last-child{font-size:.8rem;font-weight:600;color:var(--oliva);font-family:'DM Mono',monospace}
+
+/* IMPACTO */
+.impacto{background:linear-gradient(160deg,var(--oliva) 0%,var(--bosque) 100%);color:var(--beige)}
+.impacto-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.impacto-text .section-tag{color:var(--salvia)}
+.impacto-text h2{color:var(--beige)}
+.impacto-text h2 em{color:#b5d4a8}
+.impacto-text .section-subtitle{color:rgba(232,228,208,.75);max-width:100%}
+.impact-metrics{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.metric-box{background:rgba(255,255,255,.07);border-radius:20px;padding:1.8rem;border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(10px);opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.metric-box.visible{opacity:1;transform:translateY(0)}
+.metric-box:nth-child(2){transition-delay:.1s}
+.metric-box:nth-child(3){transition-delay:.2s}
+.metric-box:nth-child(4){transition-delay:.3s}
+.metric-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:#b5d4a8;line-height:1}
+.metric-unit{font-size:.9rem;font-weight:400;color:rgba(232,228,208,.7);margin-left:.2rem}
+.metric-desc{font-size:.82rem;color:rgba(232,228,208,.65);margin-top:.5rem;line-height:1.5}
+
+/* CATEGORÍAS */
+.categorias{background:var(--beige)}
+.cat-header{text-align:center;max-width:640px;margin:0 auto 4rem}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.cat-card{border-radius:20px;padding:2.5rem 2rem;position:relative;overflow:hidden;opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.cat-card.visible{opacity:1;transform:translateY(0)}
+.cat-card:nth-child(2){transition-delay:.15s}
+.cat-card:nth-child(3){transition-delay:.3s}
+.cat-a{background:linear-gradient(145deg,#e6f0e3,#d4e8cf);border:1px solid rgba(74,103,65,.2)}
+.cat-b{background:linear-gradient(145deg,#edf0e2,#e0e8d4);border:1px solid rgba(122,145,113,.25)}
+.cat-c{background:linear-gradient(145deg,#f0ede2,#e8e2cc);border:1px solid rgba(196,185,154,.4)}
+.cat-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;padding:.3rem .8rem;border-radius:100px;width:fit-content;margin-bottom:1.2rem}
+.cat-a .cat-label{background:var(--bosque);color:var(--beige)}
+.cat-b .cat-label{background:var(--oliva);color:var(--beige)}
+.cat-c .cat-label{background:var(--arena);color:var(--oscuro)}
+.cat-card h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:var(--oscuro);margin-bottom:.4rem}
+.cat-card .efficiency{font-family:'DM Mono',monospace;font-size:2.5rem;font-weight:500;color:var(--bosque);line-height:1;margin-bottom:1rem}
+.cat-b .efficiency{color:var(--oliva)}
+.cat-c .efficiency{color:var(--muted)}
+.cat-card p{font-size:.875rem;line-height:1.7;color:var(--text)}
+.cat-card ul{list-style:none;margin-top:1rem;display:flex;flex-direction:column;gap:.5rem}
+.cat-card ul li{font-size:.82rem;color:var(--muted);padding-left:1.2rem;position:relative}
+.cat-card ul li::before{content:'→';position:absolute;left:0;color:var(--salvia);font-size:.75rem}
+
+/* CTA */
+.cta-section{background:var(--oscuro);text-align:center;padding:8rem 3rem}
+.cta-section h2{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;color:var(--beige);max-width:700px;margin:0 auto 1.5rem;line-height:1.2}
+.cta-section h2 em{color:var(--salvia);font-style:italic}
+.cta-section p{color:rgba(232,228,208,.6);font-size:1.05rem;max-width:500px;margin:0 auto 3rem;line-height:1.75}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:#111a10;padding:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+.footer-logo{display:flex;align-items:center;gap:.6rem;font-family:'DM Mono',monospace;font-size:1rem;color:var(--beige);text-decoration:none;letter-spacing:.04em}
+.footer-logo svg{width:26px;height:26px}
+.footer-copy{font-size:.8rem;color:rgba(232,228,208,.4)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.82rem;color:rgba(232,228,208,.5);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--salvia)}
+
+/* UTILS */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* KEYFRAMES */
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes floatV{0%,100%{transform:translateX(-50%) translateY(-5px)}50%{transform:translateX(-50%) translateY(5px)}}
+@keyframes floatH{0%,100%{transform:translateY(-50%) translateX(-3px)}50%{transform:translateY(-50%) translateX(3px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;padding:7rem 2rem 4rem}
+  .circle-orbit{width:360px;height:360px}
+  .hero-visual{order:-1}
+  .nosotros-inner{grid-template-columns:1fr;gap:3rem}
+  .process-steps{grid-template-columns:1fr 1fr}
+  .productos-grid{grid-template-columns:1fr 1fr}
+  .impacto-inner{grid-template-columns:1fr;gap:3rem}
+  .cat-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  section{padding:5rem 1.5rem}
+  .hero{padding:6rem 1.5rem 3rem}
+  .hero-stats{flex-wrap:wrap;gap:1.5rem}
+  .process-steps,.productos-grid{grid-template-columns:1fr}
+  .impact-metrics{grid-template-columns:1fr}
+  footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M20 6C12.3 6 6 12.3 6 20s6.3 14 14 14 14-6.3 14-14" stroke="#2D4A27" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M34 20l-3-5-3 5" stroke="#2D4A27" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M17 20q4-8 10-4" stroke="#4A6741" stroke-width="2" stroke-linecap="round" fill="none"/>
+      <ellipse cx="23" cy="24" rx="5" ry="6" fill="#4A6741" transform="rotate(-20 23 24)" opacity=".85"/>
+      <path d="M23 28q-2-4 0-8" stroke="#E8E4D0" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+    CSPM
+  </a>
+  <div class="nav-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#historia">Historia</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#impacto">Impacto</a>
+    <a href="#contacto" class="nav-cta">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge"><span></span>Economía Circular · Futuro Sustentable</div>
+    <h1>Damos <em>segunda vida</em> a la tecnología solar</h1>
+    <p>CSPM diagnostica, clasifica y certifica paneles solares, luminarias y baterías usadas con estándares técnicos rigurosos — transformando residuos en activos de valor real para el planeta.</p>
+    <div class="hero-actions">
+      <a href="#proceso" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Conocer el proceso
+      </a>
+      <a href="#nosotros" class="btn-secondary">Quiénes somos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><h3>94%</h3><p>Tasa de recuperación</p></div>
+      <div class="stat-item"><h3>9</h3><p>Etapas certificadas</p></div>
+      <div class="stat-item"><h3>3</h3><p>Categorías CSPM</p></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="circle-orbit">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ring orbit-ring-2"></div>
+      <div class="center-circle">
+        <svg viewBox="0 0 100 100" fill="none">
+          <path d="M50 15C30.7 15 15 30.7 15 50s15.7 35 35 35 35-15.7 35-35" stroke="#E8E4D0" stroke-width="4" stroke-linecap="round"/>
+          <path d="M85 50l-6-10-6 10" stroke="#E8E4D0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M40 50q8-16 20-8" stroke="#b5d4a8" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="55" cy="58" rx="9" ry="11" fill="#7A9171" transform="rotate(-20 55 58)" opacity=".9"/>
+          <path d="M55 66q-4-8 0-16" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
+        </svg>
+      </div>
+      <div class="orbit-node">☀️<span class="node-label">Paneles</span></div>
+      <div class="orbit-node">🔋<span class="node-label">Baterías</span></div>
+      <div class="orbit-node">💡<span class="node-label">Luminarias</span></div>
+      <div class="orbit-node">♻️<span class="node-label">Reciclaje</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="nosotros" id="nosotros">
+  <div class="nosotros-inner">
+    <div class="nosotros-text">
+      <div class="section-tag reveal">Quiénes somos</div>
+      <h2 class="section-title reveal">Un equipo comprometido con el <em>ciclo solar</em></h2>
+      <p class="reveal">CSPM nació de una pregunta que nadie estaba respondiendo: ¿qué le pasa a un panel solar cuando deja de ser "útil"? Paneles que todavía generan energía terminan en basurales. Baterías con capacidad residual se descartan. Luminarias que aún funcionan se abandonan.</p>
+      <p class="reveal">Somos un equipo de ingenieros, técnicos y especialistas en economía circular que desarrollamos un sistema de gestión riguroso, estandarizado y trazable para recuperar el valor real de estos activos — técnico, económico y ambiental.</p>
+      <p class="reveal">Trabajamos con instaladores, empresas de mantenimiento, parques solares y distribuidores para darle a cada módulo, cada batería y cada luminaria la segunda vida que merece.</p>
+    </div>
+    <div class="nosotros-cards">
+      <div class="mv-card">
+        <span class="mv-label">🌿 Misión</span>
+        <h3>Recuperar valor donde otros ven residuos</h3>
+        <p>Gestionamos integralmente los activos fotovoltaicos al final de su primera vida mediante diagnóstico técnico objetivo, clasificación estandarizada y trazabilidad completa — maximizando el valor económico y minimizando el impacto ambiental.</p>
+      </div>
+      <div class="mv-card">
+        <span class="mv-label">🔭 Visión</span>
+        <h3>Liderar la economía circular de la energía solar</h3>
+        <p>Ser la referencia en gestión de activos fotovoltaicos de segunda vida: el estándar técnico que el mercado exige, la metodología en la que los operadores confían, y la red que conecta la oferta con la demanda de tecnología solar recuperada.</p>
+      </div>
+      <div class="mv-card">
+        <span class="mv-label">💡 Valores</span>
+        <h3>Rigor, transparencia y compromiso ambiental</h3>
+        <p>Medimos todo. Documentamos todo. No clasificamos por apariencia sino por evidencia objetiva. Cada certificado que emitimos respalda el valor real del activo — nada más, nada menos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="historia" id="historia">
+  <div class="historia-inner">
+    <div class="section-tag reveal">Nuestra historia</div>
+    <h2 class="section-title reveal">Una <em>idea simple</em> con impacto profundo</h2>
+    <p class="historia-intro reveal">Todo comenzó con una anomalía detectada en campo: cientos de módulos en perfecto estado técnico eran descartados sin diagnóstico. No existía ningún método estandarizado para evaluar y certificar su valor residual.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">🔍</div>
+        <div class="tl-content">
+          <div class="tl-year">El origen · 2020</div>
+          <h3>El problema que nadie resolvía</h3>
+          <p>Trabajando en proyectos de instalación fotovoltaica, el Ing. Germán Golder detecta que cientos de módulos con valor real eran descartados sin diagnóstico. La causa: no existía ningún estándar para evaluar activos de segunda vida. Ahí nació la idea.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">📐</div>
+        <div class="tl-content">
+          <div class="tl-year">Desarrollo · 2021 – 2022</div>
+          <h3>Construyendo la metodología</h3>
+          <p>Dos años de investigación técnica, revisión de normativa internacional (IEC 61215, IEC 61730) y pruebas de campo con cientos de módulos. Se definen los protocolos de diagnóstico, los criterios de clasificación A/B/C y el sistema de trazabilidad digital.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">⚡</div>
+        <div class="tl-content">
+          <div class="tl-year">Primeras operaciones · 2023</div>
+          <h3>El sistema en acción</h3>
+          <p>Los primeros lotes son procesados bajo el protocolo CSPM. Los resultados superan las expectativas: más del 90% del material resulta recuperable. La viabilidad técnica y económica del sistema queda demostrada en campo real.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">📄</div>
+        <div class="tl-content">
+          <div class="tl-year">Registro oficial · 2024</div>
+          <h3>Propiedad intelectual protegida</h3>
+          <p>El sistema CSPM es registrado ante la Dirección Nacional del Derecho de Autor (DNDA) de la República Argentina. La metodología, los protocolos y el sistema digital quedan protegidos como obra intelectual original del Ing. Germán Golder.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🌱</div>
+        <div class="tl-content">
+          <div class="tl-year">Hoy · 2026</div>
+          <h3>Creciendo con el mercado solar</h3>
+          <p>Con el Manual Técnico CSPM v1.0 publicado y una metodología robusta validada en campo, CSPM se posiciona como el estándar de referencia para la gestión de activos fotovoltaicos de segunda vida en Argentina y América Latina.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="proceso-header">
+    <div class="section-tag reveal">Cómo trabajamos</div>
+    <h2 class="section-title reveal">Un proceso <em>riguroso</em> de 9 etapas</h2>
+    <p class="section-subtitle reveal" style="margin:0 auto">Cada activo atraviesa un protocolo técnico estandarizado que garantiza clasificaciones confiables y trazabilidad completa — desde que ingresa hasta que sale certificado.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-head"><div class="step-num">01</div><div class="step-icon">📥</div></div>
+      <h3>Recepción</h3>
+      <p>Registro con ID único irrepetible, fotografías estandarizadas y datos completos de la placa del fabricante.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">02</div><div class="step-icon">🔍</div></div>
+      <h3>Clasificación Visual</h3>
+      <p>Inspección en 5 criterios objetivos que organiza el flujo de diagnóstico y prioriza los recursos del centro.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">03</div><div class="step-icon">⚡</div></div>
+      <h3>Diagnóstico Eléctrico</h3>
+      <p>Medición de Voc, Isc y resistencia de aislamiento con instrumentos calibrados bajo condiciones controladas.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">04</div><div class="step-icon">🔧</div></div>
+      <h3>Reparación</h3>
+      <p>Protocolos R-01 a R-04: sustitución de cajas, sellados, limpieza profunda y regeneración PID cuando aplica.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">05</div><div class="step-icon">📊</div></div>
+      <h3>Ensayo Final</h3>
+      <p>Triple medición que valida la eficiencia residual corregida a las condiciones de referencia internacionales STC.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">06</div><div class="step-icon">✅</div></div>
+      <h3>Validación</h3>
+      <p>El algoritmo CSPM calcula la categoría sugerida. Un validador habilitado confirma la clasificación definitiva.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">07</div><div class="step-icon">📄</div></div>
+      <h3>Certificación</h3>
+      <p>Ficha técnica y certificado CSPM con trazabilidad completa e inmutable, verificable por cualquier tercero.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">08</div><div class="step-icon">🏭</div></div>
+      <h3>Almacenamiento</h3>
+      <p>Zonas A, B, C y D con condiciones controladas. Localización precisa de cada activo por ID en el sistema digital.</p>
+    </div>
+    <div class="step">
+      <div class="step-head"><div class="step-num">09</div><div class="step-icon">🌱</div></div>
+      <h3>Segunda Vida</h3>
+      <p>El activo sale al mercado con documentación técnica completa. Su historia queda registrada para siempre en el sistema.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="servicios-header">
+    <div class="section-tag reveal">Nuestros servicios</div>
+    <h2 class="section-title reveal">Tres líneas de <em>recuperación certificada</em></h2>
+    <p class="section-subtitle reveal">Protocolos específicos para cada tecnología, desarrollados y validados en campo con miles de unidades procesadas.</p>
+  </div>
+  <div class="productos-grid">
+    <div class="product-card">
+      <div class="card-top card-top-solar">
+        <span class="card-icon-big">☀️</span>
+        <span class="card-badge">Silicio Cristalino</span>
+      </div>
+      <div class="card-body">
+        <h3>Paneles Fotovoltaicos</h3>
+        <p>Módulos monocristalinos, policristalinos, PERC, bifaciales y half-cut. Diagnóstico eléctrico completo con corrección a condiciones STC y protocolo de detección de PID y hot spots.</p>
+        <div class="card-specs">
+          <div class="spec-row"><span>Tecnologías</span><span>Mono · Poli · PERC · Bifacial</span></div>
+          <div class="spec-row"><span>Parámetros clave</span><span>Voc · Isc · Raisla</span></div>
+          <div class="spec-row"><span>Seguridad mínima</span><span>40 MΩ·m²</span></div>
+          <div class="spec-row"><span>Recuperación típica</span><span>> 90 %</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top card-top-bat">
+        <span class="card-icon-big">🔋</span>
+        <span class="card-badge">Ion-Litio · Pb-Ácido</span>
+      </div>
+      <div class="card-body">
+        <h3>Baterías de Almacenamiento</h3>
+        <p>Sistemas LFP, NMC y VRLA. Diagnóstico de estado de salud (SoH), análisis de balanceo de celdas y medición de capacidad residual con protocolo de seguridad diferenciado por química.</p>
+        <div class="card-specs">
+          <div class="spec-row"><span>Tecnologías</span><span>LFP · NMC · VRLA</span></div>
+          <div class="spec-row"><span>Parámetros clave</span><span>SoH · Capacidad · Tensión</span></div>
+          <div class="spec-row"><span>Rango operativo</span><span>12 V — 800 V</span></div>
+          <div class="spec-row"><span>Protocolo especial</span><span>Thermal runaway</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="card-top card-top-luz">
+        <span class="card-icon-big">💡</span>
+        <span class="card-badge">LED · Solar</span>
+      </div>
+      <div class="card-body">
+        <h3>Luminarias</h3>
+        <p>Sistemas LED solar autónoma, alumbrado público y artefactos de interior. Verificación de driver electrónico, eficacia lumínica y estimación de vida útil residual documentada.</p>
+        <div class="card-specs">
+          <div class="spec-row"><span>Tipos</span><span>Solar · Red · Autónoma</span></div>
+          <div class="spec-row"><span>Parámetros clave</span><span>Lúmenes · Eficacia · CRI</span></div>
+          <div class="spec-row"><span>Componentes</span><span>Driver · LED · Óptica</span></div>
+          <div class="spec-row"><span>Resultado</span><span>Ficha técnica CSPM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section class="impacto" id="impacto">
+  <div class="impacto-inner">
+    <div class="impacto-text">
+      <div class="section-tag">Impacto real</div>
+      <h2 class="section-title reveal">Cada módulo recuperado es <em>carbono evitado</em></h2>
+      <p class="section-subtitle reveal">CSPM cuantifica el impacto ambiental de cada operación: toneladas de CO₂ evitadas, kilogramos de materiales valiosos recuperados y energía embebida preservada.</p>
+      <div style="margin-top:2.5rem" class="reveal">
+        <a href="#contacto" class="btn-primary" style="display:inline-flex;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);box-shadow:none">
+          Trabajemos juntos →
+        </a>
+      </div>
+    </div>
+    <div class="impact-metrics">
+      <div class="metric-box">
+        <div class="metric-num">94<span class="metric-unit">%</span></div>
+        <div class="metric-desc">Tasa media de recuperación del material procesado por el sistema CSPM</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">25<span class="metric-unit">kg</span></div>
+        <div class="metric-desc">Materiales recuperables por módulo estándar: vidrio, aluminio, silicio, plata</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">−1.5<span class="metric-unit">t</span></div>
+        <div class="metric-desc">CO₂ equivalente evitado por tonelada de módulos recuperados vs. descartados</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-num">+10<span class="metric-unit">años</span></div>
+        <div class="metric-desc">Vida útil adicional promedio de los activos Categoría A certificados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORÍAS -->
+<section class="categorias" id="categorias">
+  <div class="cat-header">
+    <div class="section-tag reveal">Clasificación técnica</div>
+    <h2 class="section-title reveal">Tres categorías. <em>Un estándar</em> verificable.</h2>
+    <p class="reveal" style="color:var(--muted);font-size:1.05rem;line-height:1.8;margin-top:1rem">Nuestra clasificación convierte la incertidumbre del mercado de segunda vida en información objetiva, documentada y auditable por cualquier comprador o regulador.</p>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card cat-a">
+      <span class="cat-label">Categoría A</span>
+      <div class="efficiency">≥ 80%</div>
+      <h3>Eficiencia residual</h3>
+      <p>Activos en excelente estado técnico. Aptos para instalaciones de generación en cualquier escala. Funcionalmente equivalentes a módulos nuevos de menor potencia nominal.</p>
+      <ul>
+        <li>Voc ≥ 85% del nominal corregido</li>
+        <li>Isc ≥ 85% del nominal corregido</li>
+        <li>Factor de Forma ≥ 0,65</li>
+        <li>Aislamiento ≥ 40 MΩ·m²</li>
+        <li>Sin defectos de seguridad activos</li>
+      </ul>
+    </div>
+    <div class="cat-card cat-b">
+      <span class="cat-label">Categoría B</span>
+      <div class="efficiency">50–79%</div>
+      <h3>Eficiencia residual</h3>
+      <p>Activos funcionales con degradación parcial. Aptos para sistemas off-grid, electrificación rural, proyectos sociales y aplicaciones de menor exigencia energética.</p>
+      <ul>
+        <li>Voc ≥ 70% del nominal corregido</li>
+        <li>Isc ≥ 65% del nominal corregido</li>
+        <li>Factor de Forma ≥ 0,55</li>
+        <li>Aislamiento ≥ 40 MΩ·m²</li>
+        <li>Ficha técnica con condicionantes</li>
+      </ul>
+    </div>
+    <div class="cat-card cat-c">
+      <span class="cat-label">Categoría C</span>
+      <div class="efficiency">&lt; 50%</div>
+      <h3>Eficiencia residual</h3>
+      <p>Activos con generación reducida pero seguros eléctricamente. Aptos para proyectos experimentales, educación técnica, arte solar o reciclaje certificado de materiales.</p>
+      <ul>
+        <li>Generación mínima funcional</li>
+        <li>Aislamiento ≥ 40 MΩ·m² (obligatorio)</li>
+        <li>Sin riesgo eléctrico activo confirmado</li>
+        <li>Ficha técnica con advertencias</li>
+        <li>Derivación a reciclaje documentada</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contacto">
+  <h2>El futuro de la energía solar es <em>circular</em></h2>
+  <p>¿Tenés activos fotovoltaicos que ya no usás? ¿Querés saber el valor real de un lote de paneles, baterías o luminarias? Contactanos.</p>
+  <div class="cta-buttons">
+    <a href="mailto:contacto@cspm.com.ar" class="btn-primary" style="font-size:1rem">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Escribinos
+    </a>
+    <a href="#nosotros" class="btn-secondary" style="border-color:rgba(232,228,208,.25);color:var(--beige)">Conocer más</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M20 8C13 8 8 13 8 20s5 12 12 12 12-5 12-12" stroke="#7A9171" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M32 20l-3-5-3 5" stroke="#7A9171" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <ellipse cx="21" cy="22" rx="6" ry="7" fill="#4A6741" transform="rotate(-15 21 22)" opacity=".9"/>
+    </svg>
+    CSPM
+  </a>
+  <div class="footer-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#historia">Historia</a>
+    <a href="#proceso">Proceso</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#categorias">Categorías</a>
+  </div>
+  <div class="footer-copy">© 2026 CSPM · Ing. Germán Golder · Todos los derechos reservados · DNDA Argentina</div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.reveal,.step,.product-card,.metric-box,.cat-card,.mv-card,.tl-item')
+  .forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  document.getElementById('top-nav').style.boxShadow =
+    window.scrollY > 40 ? '0 4px 30px rgba(45,74,39,.1)' : 'none';
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]:not(.nav-cta)');
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(a => {
+    const active = a.getAttribute('href') === '#' + current;
+    a.style.color = active ? 'var(--bosque)' : '';
+    a.style.fontWeight = active ? '600' : '';
+  });
+});
+</script>
+</body>
+</html>
