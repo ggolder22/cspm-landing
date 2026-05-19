@@ -1,0 +1,17 @@
+.cta-section { background: var(--oscuro); text-align: center; padding: 8rem 3rem }
+.cta-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900; color: var(--beige); max-width: 700px; margin: 0 auto 1.5rem; line-height: 1.2 }
+.cta-section h2 em { color: var(--salvia); font-style: italic }
+.cta-section p { color: rgba(232,228,208,.6); font-size: 1.05rem; max-width: 500px; margin: 0 auto 3rem; line-height: 1.75 }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap }
+
+footer { background: #111a10; padding: 3rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem }
+.footer-logo { display: flex; align-items: center; gap: .6rem; font-family: 'DM Mono', monospace; font-size: 1rem; color: var(--beige); text-decoration: none; letter-spacing: .04em }
+.footer-logo svg { width: 26px; height: 26px }
+.footer-copy { font-size: .8rem; color: rgba(232,228,208,.4) }
+.footer-links { display: flex; gap: 1.5rem }
+.footer-links a { font-size: .82rem; color: rgba(232,228,208,.5); text-decoration: none; transition: color .2s }
+.footer-links a:hover { color: var(--salvia) }
+
+@media (max-width: 640px) {
+  footer { flex-direction: column; align-items: flex-start }
+}

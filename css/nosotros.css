@@ -1,0 +1,18 @@
+.nosotros { background: var(--beige) }
+.nosotros-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; max-width: 1200px; margin: 0 auto }
+.nosotros-text p { font-size: 1.02rem; line-height: 1.85; color: var(--muted); margin-top: 1.2rem }
+.nosotros-cards { display: flex; flex-direction: column; gap: 1.2rem }
+.mv-card { background: var(--blanco); border-radius: 20px; padding: 2rem; border: 1px solid rgba(74,103,65,.1); opacity: 0; transform: translateX(20px); transition: opacity .6s ease, transform .6s ease, box-shadow .3s }
+.mv-card.visible { opacity: 1; transform: translateX(0) }
+.mv-card:nth-child(2) { transition-delay: .15s }
+.mv-card:nth-child(3) { transition-delay: .3s }
+.mv-card:hover { box-shadow: 0 12px 35px rgba(45,74,39,.1); transform: translateY(-3px) }
+.mv-label { display: inline-flex; align-items: center; gap: .5rem; font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--blanco); background: var(--bosque); padding: .3rem .85rem; border-radius: 100px; margin-bottom: 1rem; font-weight: 500 }
+.mv-card:nth-child(2) .mv-label { background: var(--oliva) }
+.mv-card:nth-child(3) .mv-label { background: var(--salvia) }
+.mv-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--oscuro); margin-bottom: .6rem }
+.mv-card p { font-size: .9rem; line-height: 1.7; color: var(--muted) }
+
+@media (max-width: 1024px) {
+  .nosotros-inner { grid-template-columns: 1fr; gap: 3rem }
+}

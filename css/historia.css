@@ -1,0 +1,20 @@
+.historia { background: var(--oscuro) }
+.historia-inner { max-width: 860px; margin: 0 auto }
+.historia .section-tag { color: var(--salvia) }
+.historia h2.section-title { color: var(--beige) }
+.historia h2.section-title em { color: var(--salvia) }
+.historia-intro { font-size: 1.02rem; line-height: 1.85; color: rgba(232,228,208,.6); margin-top: 1.2rem; max-width: 620px }
+
+.timeline { margin-top: 4rem; display: flex; flex-direction: column; position: relative }
+.timeline::before { content: ''; position: absolute; left: 2.2rem; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, transparent, var(--salvia) 10%, var(--oliva) 90%, transparent) }
+.tl-item { display: grid; grid-template-columns: 4.5rem 1fr; gap: 2rem; padding-bottom: 3rem; position: relative; opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease }
+.tl-item.visible { opacity: 1; transform: translateY(0) }
+.tl-item:nth-child(2) { transition-delay: .1s }
+.tl-item:nth-child(3) { transition-delay: .2s }
+.tl-item:nth-child(4) { transition-delay: .3s }
+.tl-item:nth-child(5) { transition-delay: .4s }
+.tl-item:last-child { padding-bottom: 0 }
+.tl-dot { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--oliva), var(--salvia)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; position: relative; z-index: 1; box-shadow: 0 0 0 6px rgba(122,145,113,.1); flex-shrink: 0 }
+.tl-year { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--salvia); letter-spacing: .1em; font-weight: 500; margin-bottom: .4rem; text-transform: uppercase }
+.tl-content h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--beige); margin-bottom: .5rem }
+.tl-content p { font-size: .9rem; line-height: 1.7; color: rgba(232,228,208,.6) }

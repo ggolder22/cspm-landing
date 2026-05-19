@@ -1,0 +1,30 @@
+.servicios { background: var(--blanco) }
+.servicios-header { max-width: 600px; margin-bottom: 4rem }
+.productos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem }
+.product-card { background: var(--blanco); border-radius: 24px; overflow: hidden; border: 1px solid rgba(74,103,65,.1); opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease, box-shadow .3s }
+.product-card.visible { opacity: 1; transform: translateY(0) }
+.product-card:nth-child(2) { transition-delay: .1s }
+.product-card:nth-child(3) { transition-delay: .2s }
+.product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(45,74,39,.12) }
+
+.card-top { height: 200px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden }
+.card-top-solar { background: linear-gradient(135deg, #e8f0e6, #c8d8c4) }
+.card-top-bat   { background: linear-gradient(135deg, #dde8e0, #b8cdb8) }
+.card-top-luz   { background: linear-gradient(135deg, #e5e8dc, #ccd4c0) }
+.card-icon-big { font-size: 5rem; filter: drop-shadow(0 8px 20px rgba(45,74,39,.2)) }
+.card-badge { position: absolute; top: 1rem; right: 1rem; background: var(--bosque); color: var(--beige); font-size: .68rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 100px }
+
+.card-body { padding: 2rem }
+.card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--oscuro); margin-bottom: .6rem }
+.card-body p { font-size: .9rem; line-height: 1.7; color: var(--muted) }
+.card-specs { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(74,103,65,.1); display: flex; flex-direction: column; gap: .6rem }
+.spec-row { display: flex; justify-content: space-between; align-items: center }
+.spec-row span:first-child { font-size: .8rem; color: var(--muted); font-weight: 500 }
+.spec-row span:last-child { font-size: .8rem; font-weight: 600; color: var(--oliva); font-family: 'DM Mono', monospace }
+
+@media (max-width: 1024px) {
+  .productos-grid { grid-template-columns: 1fr 1fr }
+}
+@media (max-width: 640px) {
+  .productos-grid { grid-template-columns: 1fr }
+}

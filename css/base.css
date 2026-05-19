@@ -1,0 +1,47 @@
+:root {
+  --salvia:  #7A9171;
+  --oliva:   #4A6741;
+  --bosque:  #2D4A27;
+  --beige:   #E8E4D0;
+  --arena:   #C4B99A;
+  --blanco:  #F7F5EE;
+  --oscuro:  #1A2718;
+  --text:    #2D3A2B;
+  --muted:   #6B7A69;
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body { font-family: 'DM Sans', sans-serif; background: var(--blanco); color: var(--text); overflow-x: hidden }
+
+/* SECTION BASE */
+section { padding: 7rem 3rem }
+.section-tag { display: inline-flex; align-items: center; gap: .5rem; font-family: 'DM Mono', monospace; font-size: .75rem; color: var(--salvia); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.2rem }
+.section-tag::before { content: '//'; opacity: .5 }
+h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; line-height: 1.2; color: var(--oscuro) }
+h2.section-title em { color: var(--oliva); font-style: italic }
+.section-subtitle { font-size: 1.05rem; line-height: 1.8; color: var(--muted); max-width: 580px; margin-top: 1rem }
+
+/* BUTTONS */
+.btn-primary { background: var(--bosque); color: var(--beige); padding: .9rem 2rem; border-radius: 100px; border: none; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; transition: background .25s, transform .2s, box-shadow .2s; box-shadow: 0 4px 20px rgba(45,74,39,.25) }
+.btn-primary:hover { background: var(--oliva); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,74,39,.3) }
+.btn-secondary { background: transparent; color: var(--bosque); padding: .9rem 2rem; border-radius: 100px; border: 1.5px solid rgba(45,74,39,.3); font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; transition: all .25s }
+.btn-secondary:hover { border-color: var(--oliva); background: rgba(74,103,65,.06); transform: translateY(-2px) }
+.btn-outline-light { display: inline-flex; background: rgba(255,255,255,.15); border: 1.5px solid rgba(255,255,255,.3); box-shadow: none }
+.btn-outline-dark { border-color: rgba(232,228,208,.25); color: var(--beige) }
+
+/* UTILS */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease }
+.reveal.visible { opacity: 1; transform: translateY(0) }
+
+/* KEYFRAMES */
+@keyframes spin    { to { transform: rotate(360deg) } }
+@keyframes floatV  { 0%,100% { transform: translateX(-50%) translateY(-5px) } 50% { transform: translateX(-50%) translateY(5px) } }
+@keyframes floatH  { 0%,100% { transform: translateY(-50%) translateX(-3px) } 50% { transform: translateY(-50%) translateX(3px) } }
+@keyframes fadeUp  { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes fadeIn  { from { opacity: 0; transform: scale(.96) } to { opacity: 1; transform: scale(1) } }
+@keyframes pulse   { 0%,100% { opacity: 1; transform: scale(1) } 50% { opacity: .5; transform: scale(1.5) } }
+
+@media (max-width: 640px) {
+  section { padding: 5rem 1.5rem }
+}

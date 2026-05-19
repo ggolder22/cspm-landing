@@ -1,0 +1,31 @@
+.categorias { background: var(--beige) }
+.cat-header { text-align: center; max-width: 640px; margin: 0 auto 4rem }
+.cat-header p { color: var(--muted); font-size: 1.05rem; line-height: 1.8; margin-top: 1rem }
+
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem }
+.cat-card { border-radius: 20px; padding: 2.5rem 2rem; position: relative; overflow: hidden; opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease }
+.cat-card.visible { opacity: 1; transform: translateY(0) }
+.cat-card:nth-child(2) { transition-delay: .15s }
+.cat-card:nth-child(3) { transition-delay: .3s }
+
+.cat-a { background: linear-gradient(145deg, #e6f0e3, #d4e8cf); border: 1px solid rgba(74,103,65,.2) }
+.cat-b { background: linear-gradient(145deg, #edf0e2, #e0e8d4); border: 1px solid rgba(122,145,113,.25) }
+.cat-c { background: linear-gradient(145deg, #f0ede2, #e8e2cc); border: 1px solid rgba(196,185,154,.4) }
+
+.cat-label { font-family: 'DM Mono', monospace; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; padding: .3rem .8rem; border-radius: 100px; width: fit-content; margin-bottom: 1.2rem }
+.cat-a .cat-label { background: var(--bosque); color: var(--beige) }
+.cat-b .cat-label { background: var(--oliva); color: var(--beige) }
+.cat-c .cat-label { background: var(--arena); color: var(--oscuro) }
+
+.cat-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; color: var(--oscuro); margin-bottom: .4rem }
+.cat-card .efficiency { font-family: 'DM Mono', monospace; font-size: 2.5rem; font-weight: 500; color: var(--bosque); line-height: 1; margin-bottom: 1rem }
+.cat-b .efficiency { color: var(--oliva) }
+.cat-c .efficiency { color: var(--muted) }
+.cat-card p { font-size: .875rem; line-height: 1.7; color: var(--text) }
+.cat-card ul { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: .5rem }
+.cat-card ul li { font-size: .82rem; color: var(--muted); padding-left: 1.2rem; position: relative }
+.cat-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--salvia); font-size: .75rem }
+
+@media (max-width: 1024px) {
+  .cat-grid { grid-template-columns: 1fr }
+}

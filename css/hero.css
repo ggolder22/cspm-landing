@@ -1,0 +1,41 @@
+.hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 8rem 3rem 5rem; gap: 4rem; position: relative; overflow: hidden }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(122,145,113,.12) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 10% 90%, rgba(196,185,154,.2) 0%, transparent 50%); pointer-events: none }
+
+.hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(74,103,65,.1); border: 1px solid rgba(74,103,65,.2); color: var(--oliva); padding: .4rem 1rem; border-radius: 100px; font-size: .8rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 1.8rem; width: fit-content; animation: fadeUp .7s ease both }
+.hero-badge span { width: 6px; height: 6px; border-radius: 50%; background: var(--salvia); animation: pulse 2s infinite }
+.hero-text { position: relative; z-index: 1 }
+.hero-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; color: var(--oscuro); animation: fadeUp .8s .1s ease both }
+.hero-text h1 em { font-style: italic; color: var(--oliva) }
+.hero-text p { margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.75; color: var(--muted); max-width: 500px; animation: fadeUp .8s .2s ease both }
+.hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp .8s .3s ease both }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(74,103,65,.15); animation: fadeUp .8s .4s ease both }
+.stat-item h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--bosque) }
+.stat-item p { font-size: .8rem; color: var(--muted); font-weight: 500; margin-top: .2rem; letter-spacing: .03em }
+
+/* Hero visual */
+.hero-visual { position: relative; display: flex; align-items: center; justify-content: center; animation: fadeIn 1s .3s ease both }
+.circle-orbit { position: relative; width: 480px; height: 480px }
+.orbit-ring { position: absolute; inset: 0; border-radius: 50%; border: 1.5px dashed rgba(74,103,65,.2); animation: spin 25s linear infinite }
+.orbit-ring-2 { inset: 40px; border-color: rgba(122,145,113,.25); animation: spin 18s linear infinite reverse }
+.center-circle { position: absolute; inset: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--bosque), var(--oliva)); display: flex; align-items: center; justify-content: center; box-shadow: 0 20px 60px rgba(45,74,39,.35) }
+.center-circle svg { width: 100px; height: 100px }
+.orbit-node { position: absolute; width: 70px; height: 70px; border-radius: 50%; background: var(--beige); border: 2px solid rgba(74,103,65,.2); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(45,74,39,.15); font-size: 1.6rem }
+.orbit-node:nth-child(3) { top: -35px; left: 50%; transform: translateX(-50%); animation: floatV 4s ease-in-out infinite 0s }
+.orbit-node:nth-child(4) { top: 50%; right: -35px; transform: translateY(-50%); animation: floatH 4s ease-in-out infinite .8s }
+.orbit-node:nth-child(5) { bottom: -35px; left: 50%; transform: translateX(-50%); animation: floatV 4s ease-in-out infinite 1.6s }
+.orbit-node:nth-child(6) { top: 50%; left: -35px; transform: translateY(-50%); animation: floatH 4s ease-in-out infinite 2.4s }
+.node-label { position: absolute; font-size: .7rem; font-weight: 600; color: var(--bosque); white-space: nowrap; letter-spacing: .04em }
+.orbit-node:nth-child(3) .node-label { top: -26px; left: 50%; transform: translateX(-50%) }
+.orbit-node:nth-child(4) .node-label { right: -78px; top: 50%; transform: translateY(-50%) }
+.orbit-node:nth-child(5) .node-label { bottom: -26px; left: 50%; transform: translateX(-50%) }
+.orbit-node:nth-child(6) .node-label { left: -88px; top: 50%; transform: translateY(-50%) }
+
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem }
+  .circle-orbit { width: 360px; height: 360px }
+  .hero-visual { order: -1 }
+}
+@media (max-width: 640px) {
+  .hero { padding: 6rem 1.5rem 3rem }
+  .hero-stats { flex-wrap: wrap; gap: 1.5rem }
+}

@@ -1,0 +1,13 @@
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(247,245,238,.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(74,103,65,.12); transition: box-shadow .3s }
+.nav-logo { display: flex; align-items: center; gap: .7rem; font-family: 'DM Mono', monospace; font-size: 1.25rem; font-weight: 500; color: var(--bosque); letter-spacing: .04em; text-decoration: none }
+.nav-logo svg { width: 34px; height: 34px }
+.nav-links { display: flex; gap: 2.4rem; align-items: center }
+.nav-links a { font-size: .875rem; font-weight: 500; color: var(--muted); text-decoration: none; letter-spacing: .03em; transition: color .25s }
+.nav-links a:hover { color: var(--bosque) }
+.nav-cta { background: var(--bosque) !important; color: var(--beige) !important; padding: .55rem 1.4rem; border-radius: 100px; font-weight: 600 !important; transition: background .25s, transform .2s !important }
+.nav-cta:hover { background: var(--oliva) !important; transform: translateY(-1px) }
+
+@media (max-width: 640px) {
+  nav { padding: 1rem 1.5rem }
+  .nav-links { display: none }
+}
