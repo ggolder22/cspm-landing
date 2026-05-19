@@ -1,0 +1,35 @@
+/* SECCIÓN MINERÍA */
+.mineria { background: var(--oscuro); position: relative; overflow: hidden }
+.mineria::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(74,103,65,.12) 0%, transparent 60%); pointer-events: none }
+
+.mineria-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; max-width: 1100px; margin: 0 auto; position: relative }
+
+.mineria-text .section-tag { color: var(--salvia) }
+.mineria-text h2.section-title { color: var(--beige) }
+.mineria-text h2.section-title em { color: var(--salvia) }
+.mineria-text p { font-size: 1rem; line-height: 1.85; color: rgba(232,228,208,.65); margin-top: 1.2rem }
+.mineria-text p strong { color: var(--beige); font-weight: 600 }
+
+.mineria-cta-inline { display: inline-flex; align-items: center; gap: .5rem; margin-top: 2.5rem; font-size: .9rem; font-weight: 600; color: var(--salvia); text-decoration: none; letter-spacing: .02em; transition: gap .2s }
+.mineria-cta-inline:hover { gap: .8rem }
+
+/* Cards de propuesta de valor */
+.mineria-cards { display: flex; flex-direction: column; gap: 1.2rem }
+.mineria-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 18px; padding: 1.6rem 1.8rem; transition: background .3s, border-color .3s }
+.mineria-card:hover { background: rgba(255,255,255,.07); border-color: rgba(74,103,65,.3) }
+.mineria-card-icon { font-size: 1.6rem; margin-bottom: .8rem }
+.mineria-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--beige); margin-bottom: .4rem }
+.mineria-card p { font-size: .875rem; line-height: 1.65; color: rgba(232,228,208,.55) }
+
+/* Bloque de datos / métricas de impacto */
+.mineria-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.06) }
+.mineria-stat h3 { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; color: var(--salvia) }
+.mineria-stat p { font-size: .78rem; color: rgba(232,228,208,.45); margin-top: .2rem; line-height: 1.4 }
+
+@media (max-width: 1024px) {
+  .mineria-inner { grid-template-columns: 1fr; gap: 3.5rem }
+  .mineria-stats { grid-template-columns: repeat(4, 1fr) }
+}
+@media (max-width: 640px) {
+  .mineria-stats { grid-template-columns: 1fr 1fr }
+}
