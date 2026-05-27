@@ -6,8 +6,7 @@ excerpt: El análisis de ciclo de vida tradicional mide el impacto ambiental de
   circular, ese es exactamente el momento donde empieza el valor real.
 image: /img/blog/cspm_linkedin_cover-2-.png
 tags:
-  - "#EconomíaCircular #LCA #ESG #CarbonAccounting #CSPM #PanelesSolares
-    #Sustentabilidad #GHGProtocol #ScopeThree #SegundaVida"
+  - SEGUNDAVIDA
 layout: layouts/post.njk
 ---
 
