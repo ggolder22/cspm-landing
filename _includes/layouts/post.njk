@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} — CSPM Blog</title>
+<meta name="description" content="{{ excerpt }}">
+<meta property="og:title" content="{{ title }} — CSPM">
+<meta property="og:description" content="{{ excerpt }}">
+<meta property="og:type" content="article">
+{% if image %}<meta property="og:image" content="{{ image }}">{% endif %}
+<meta name="author" content="Ing. Germán Golder">
+<link rel="canonical" href="https://cspm-landing.vercel.app/blog/{{ page.fileSlug }}/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ title }}",
+  "description": "{{ excerpt }}",
+  "datePublished": "{{ date | dateISO }}",
+  "author": {
+    "@type": "Person",
+    "name": "Ing. Germán Golder"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CSPM",
+    "url": "https://cspm-landing.vercel.app"
+  }{% if image %},
+  "image": "{{ image }}"{% endif %}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/blog-post.css">
+<link rel="stylesheet" href="/css/cta-footer.css">
+</head>
+<body>
+
+{% include "nav-blog.njk" %}
+
+<article class="post-article">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-date">{{ date | fechaES }}</span>
+      {% if tags %}
+      <div class="post-tags">
+        {% for tag in tags %}
+          <span class="post-tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <h1 class="post-title">{{ title }}</h1>
+    <p class="post-excerpt">{{ excerpt }}</p>
+    {% if image %}
+    <div class="post-hero-img">
+      <img src="{{ image }}" alt="{{ title }}" loading="eager">
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="post-body">
+    {{ content | safe }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="post-author">
+      <div class="author-info">
+        <div class="author-avatar">GG</div>
+        <div>
+          <strong>Ing. Germán Golder</strong>
+          <span>Fundador · CSPM</span>
+        </div>
+      </div>
+    </div>
+    <a href="/blog/" class="post-back">← Volver al blog</a>
+  </footer>
+
+</article>
+
+<section class="cta-section">
+  <h2>¿Tenés activos solares que ya <em>no usás</em>?</h2>
+  <p>Contactanos para una evaluación técnica sin compromiso.</p>
+  <div class="cta-buttons">
+    <a href="mailto:ggoldercspm@gmail.com" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Escribinos
+    </a>
+    <a href="/blog/" class="btn-secondary btn-outline-dark">Más artículos</a>
+  </div>
+</section>
+
+{% include "footer-blog.njk" %}
+
+<script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+---
+title: Blog CSPM — Economía Circular Solar
+permalink: /blog/
+navActive: blog
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog CSPM — Economía Circular Solar y Minería</title>
+<meta name="description" content="Artículos técnicos sobre economía circular solar, segunda vida de paneles fotovoltaicos, reducción de huella de carbono y RAEE en Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/nav.css">
+<link rel="stylesheet" href="/css/blog-index.css">
+<link rel="stylesheet" href="/css/cta-footer.css">
+</head>
+<body>
+
+{% include "nav-blog.njk" %}
+
+<header class="blog-header">
+  <div class="blog-header-inner">
+    <div class="section-tag">Publicaciones</div>
+    <h1>Blog <em>CSPM</em></h1>
+    <p>Artículos técnicos sobre economía circular solar, gestión de activos RAEE, reducción de huella de carbono y segunda vida fotovoltaica.</p>
+  </div>
+</header>
+
+<section class="blog-listing">
+  {% if collections.posts.length %}
+    <div class="posts-grid">
+      {% for post in collections.posts %}
+      <a href="{{ post.url }}" class="post-card">
+        {% if post.data.image %}
+        <div class="post-card-img">
+          <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+        </div>
+        {% else %}
+        <div class="post-card-img post-card-img-placeholder">
+          <svg viewBox="0 0 60 40" fill="none"><path d="M5 20C5 11.7 11.7 5 20 5s15 6.7 15 15-6.7 15-15 15" stroke="#4A6741" stroke-width="2" stroke-linecap="round"/><path d="M35 20l-3-5-3 5" stroke="#4A6741" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="28" cy="24" rx="7" ry="8" fill="#7A9171" transform="rotate(-15 28 24)" opacity=".6"/></svg>
+        </div>
+        {% endif %}
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            <span class="post-card-date">{{ post.data.date | fechaES }}</span>
+            {% if post.data.tags %}
+              <span class="post-card-tag">{{ post.data.tags[0] }}</span>
+            {% endif %}
+          </div>
+          <h2>{{ post.data.title }}</h2>
+          <p>{{ post.data.excerpt }}</p>
+          <span class="post-card-link">Leer artículo →</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="blog-empty">
+      <p>Los primeros artículos están en camino.</p>
+    </div>
+  {% endif %}
+</section>
+
+{% include "footer-blog.njk" %}
+
+<script src="/js/main.js"></script>
+</body>
+</html>

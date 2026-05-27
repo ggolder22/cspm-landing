@@ -1,0 +1,25 @@
+{
+  "name": "cspm-landing",
+  "version": "1.0.0",
+  "description": "- `index.html` — la landing page completa - `vercel.json` — configuración de Vercel - `README.md` — este archivo",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "dev": "npx @11ty/eleventy --serve --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ggolder22/cspm-landing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ggolder22/cspm-landing/issues"
+  },
+  "homepage": "https://github.com/ggolder22/cspm-landing#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  }
+}

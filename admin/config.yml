@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: ggolder22/cspm-landing
+  branch: main
+  base_url: https://cspm-landing.vercel.app   # Actualizar con tu dominio real
+
+media_folder: "img/blog"
+public_folder: "/img/blog"
+
+locale: es
+
+collections:
+  - name: "articulos"
+    label: "Artículos del blog"
+    folder: "blog/posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - label: "Título"
+        name: "title"
+        widget: "string"
+        hint: "El título del artículo. Sé específico — es lo que aparece en Google."
+
+      - label: "Fecha de publicación"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        default: ""
+
+      - label: "Resumen"
+        name: "excerpt"
+        widget: "text"
+        hint: "1-2 oraciones. Aparece en el índice del blog y en los resultados de Google."
+
+      - label: "Imagen destacada"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Opcional. Formato JPG o PNG, mínimo 1200x630px."
+
+      - label: "Contenido"
+        name: "body"
+        widget: "markdown"
+        hint: "El cuerpo del artículo. Usá ## para subtítulos y **texto** para negritas."
+
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        hint: "Palabras clave separadas por Enter. Ej: paneles solares, RAEE, minería"
+
+      - label: "Layout"
+        name: "layout"
+        widget: "hidden"
+        default: "layouts/post.njk"
