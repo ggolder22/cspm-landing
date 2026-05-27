@@ -2,7 +2,8 @@ backend:
   name: github
   repo: ggolder22/cspm-landing
   branch: main
-  base_url: https://cspm-landing.vercel.app   # Actualizar con tu dominio real
+  base_url: https://cspm-landing.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "img/blog"
 public_folder: "/img/blog"
