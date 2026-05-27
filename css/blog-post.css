@@ -1,3 +1,6 @@
+.back-to-blog { position: fixed; top: 5.5rem; left: 2rem; z-index: 99; display: inline-flex; align-items: center; gap: .4rem; font-size: .78rem; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: .03em; transition: color .2s; background: rgba(247,245,238,.9); padding: .4rem .9rem; border-radius: 100px; border: 1px solid rgba(74,103,65,.15); backdrop-filter: blur(8px) }
+.back-to-blog:hover { color: var(--bosque) }
+
 .post-article { max-width: 760px; margin: 0 auto; padding: 8rem 2rem 4rem }
 
 .post-header { margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(74,103,65,.12) }
