@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ggolder22/cspm-landing
   branch: main
-  base_url: https://cspm-landing.vercel.app
+  base_url: https://cspm.com.ar
   auth_endpoint: api/auth
 
 media_folder: "img/blog"
