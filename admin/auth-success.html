@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Auth</title></head>
+<body>
+<script>
+(function() {
+  var hash = window.location.hash.slice(1);
+  var params = new URLSearchParams(hash);
+  var token = params.get('token');
+  if (token) {
+    try {
+      var ch = new BroadcastChannel('decap-cms-oauth');
+      ch.postMessage({ token: token, provider: 'github' });
+      ch.close();
+    } catch(e) {}
+  }
+  window.close();
+})();
+</script>
+</body>
+</html>

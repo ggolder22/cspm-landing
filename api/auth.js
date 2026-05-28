@@ -26,26 +26,13 @@ module.exports = async function handler(req, res) {
       const data = await response.json();
 
       if (data.access_token) {
-        const message = JSON.stringify(
-          'authorization:github:success:' +
-          JSON.stringify({ token: data.access_token, provider: 'github' })
-        );
-        return res.send(`<!DOCTYPE html><html><body><script>
-(function() {
-  function receiveMessage(e) {
-    window.opener.postMessage(${message}, e.origin);
-    window.close();
-  }
-  window.addEventListener('message', receiveMessage, false);
-  window.opener.postMessage('authorizing:github', '*');
-})();
-<\/script></body></html>`);
+        // GitHub usa COOP: same-origin, lo que corta window.opener en el popup.
+        // Redirigimos al relay en la misma origen que el admin para comunicar via BroadcastChannel.
+        const token = encodeURIComponent(data.access_token);
+        return res.redirect(`https://www.cspm.com.ar/admin/auth-success.html#token=${token}`);
       }
 
-      return res.send(`<!DOCTYPE html><html><body><script>
-window.opener.postMessage('authorization:github:error:${JSON.stringify(data)}', '*');
-window.close();
-<\/script></body></html>`);
+      return res.status(401).json({ error: 'Token exchange failed', detail: data });
 
     } catch (err) {
       return res.status(500).json({ error: err.message });

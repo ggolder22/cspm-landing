@@ -6,6 +6,22 @@
   <title>CSPM Admin</title>
 </head>
 <body>
+  <script>
+  (function() {
+    try {
+      var ch = new BroadcastChannel('decap-cms-oauth');
+      ch.addEventListener('message', function(e) {
+        var token = e.data.token;
+        var provider = e.data.provider || 'github';
+        ch.close();
+        window.postMessage(
+          'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
+          window.location.origin
+        );
+      });
+    } catch(e) {}
+  })();
+  </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
