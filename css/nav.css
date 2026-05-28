@@ -6,6 +6,8 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .nav-links a:hover { color: var(--bosque) }
 .nav-cta { background: var(--bosque) !important; color: var(--beige) !important; padding: .55rem 1.4rem; border-radius: 100px; font-weight: 600 !important; transition: background .25s, transform .2s !important }
 .nav-cta:hover { background: var(--oliva) !important; transform: translateY(-1px) }
+.nav-login { display: inline-flex; align-items: center; gap: .4rem; background: transparent !important; color: var(--bosque) !important; padding: .5rem 1.2rem; border-radius: 100px; font-weight: 600 !important; border: 1.5px solid var(--bosque) !important; transition: background .25s, color .25s, transform .2s !important; white-space: nowrap }
+.nav-login:hover { background: var(--bosque) !important; color: var(--beige) !important; transform: translateY(-1px) }
 
 @media (max-width: 640px) {
   nav { padding: 1rem 1.5rem }
