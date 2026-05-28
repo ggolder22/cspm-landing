@@ -7,17 +7,20 @@
 </head>
 <body>
   <script>
+  // Recibe el token via BroadcastChannel desde auth-success.html
+  // y lo reenvía como window.postMessage para que Decap CMS lo procese
   (function() {
     try {
       var ch = new BroadcastChannel('decap-cms-oauth');
       ch.addEventListener('message', function(e) {
+        ch.close();
         var token = e.data.token;
         var provider = e.data.provider || 'github';
-        ch.close();
-        window.postMessage(
-          'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider }),
-          window.location.origin
-        );
+        var msg = 'authorization:' + provider + ':success:' + JSON.stringify({ token: token, provider: provider });
+        // Pequeño delay para asegurarnos que el popup aún está abierto cuando Decap procesa
+        setTimeout(function() {
+          window.postMessage(msg, window.location.origin);
+        }, 100);
       });
     } catch(e) {}
   })();

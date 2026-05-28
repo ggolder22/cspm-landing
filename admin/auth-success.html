@@ -7,14 +7,27 @@
   var hash = window.location.hash.slice(1);
   var params = new URLSearchParams(hash);
   var token = params.get('token');
-  if (token) {
+
+  if (!token) { window.close(); return; }
+
+  var msg = 'authorization:github:success:' + JSON.stringify({ token: token, provider: 'github' });
+
+  // Intento directo via window.opener (funciona si no fue cortado por COOP)
+  if (window.opener && !window.opener.closed) {
     try {
-      var ch = new BroadcastChannel('decap-cms-oauth');
-      ch.postMessage({ token: token, provider: 'github' });
-      ch.close();
+      window.opener.postMessage(msg, '*');
     } catch(e) {}
   }
-  window.close();
+
+  // Fallback: BroadcastChannel (misma origin que el admin)
+  try {
+    var ch = new BroadcastChannel('decap-cms-oauth');
+    ch.postMessage({ token: token, provider: 'github' });
+    ch.close();
+  } catch(e) {}
+
+  // Espera 800ms para que Decap CMS procese el mensaje antes de cerrar el popup
+  setTimeout(function() { window.close(); }, 800);
 })();
 </script>
 </body>
