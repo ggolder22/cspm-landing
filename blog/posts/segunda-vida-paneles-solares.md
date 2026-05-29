@@ -74,4 +74,4 @@ Extender la vida útil de un panel en 10 años evita la fabricación de un panel
 
 ---
 
-*CSPM es un sistema de diagnóstico, clasificación y certificación de activos fotovoltaicos de segunda vida, desarrollado en Argentina y registrado ante la DNDA. Para más información: [ggoldercspm@gmail.com](mailto:ggoldercspm@gmail.com)*
+*CSPM es un sistema de diagnóstico, clasificación y certificación de activos fotovoltaicos de segunda vida, desarrollado en Argentina y registrado ante la DNDA. Para más información: [ggolder@cspm.com.ar](mailto:ggolder@cspm.com.ar)*
