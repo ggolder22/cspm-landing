@@ -7,11 +7,7 @@
 .hero-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; color: var(--oscuro); animation: fadeUp .8s .1s ease both }
 .hero-text h1 em { font-style: italic; color: var(--oliva) }
 .hero-text p { margin-top: 1.5rem; font-size: 1.1rem; line-height: 1.75; color: var(--muted); max-width: 500px; animation: fadeUp .8s .2s ease both }
-.hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp .8s .3s ease both }
-.hero-login-btn { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.2rem; font-size: .82rem; font-weight: 600; color: var(--muted); text-decoration: none; letter-spacing: .04em; transition: color .2s; animation: fadeUp .8s .35s ease both }
-.hero-login-btn:hover { color: var(--bosque) }
-.hero-login-btn svg { opacity: .6 }
-.hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(74,103,65,.15); animation: fadeUp .8s .4s ease both }
+.hero-actions { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; animation: fadeUp .8s .3s ease both }.hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(74,103,65,.15); animation: fadeUp .8s .4s ease both }
 .stat-item h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--bosque) }
 .stat-item p { font-size: .8rem; color: var(--muted); font-weight: 500; margin-top: .2rem; letter-spacing: .03em }
 
