@@ -6,6 +6,11 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .nav-links a:hover { color: var(--bosque) }
 .nav-cta { background: var(--bosque) !important; color: var(--beige) !important; padding: .55rem 1.4rem; border-radius: 100px; font-weight: 600 !important; transition: background .25s, transform .2s !important }
 .nav-cta:hover { background: var(--oliva) !important; transform: translateY(-1px) }
+.lang-switcher { display: flex; align-items: center; gap: .25rem; margin-left: 1.2rem }
+.lang-btn { background: none; border: 1.5px solid rgba(74,103,65,.25); color: var(--muted); font-family: 'DM Mono', monospace; font-size: .68rem; font-weight: 500; letter-spacing: .06em; padding: .28rem .55rem; border-radius: 4px; cursor: pointer; transition: all .2s; line-height: 1 }
+.lang-btn.active { background: var(--bosque); border-color: var(--bosque); color: var(--beige) }
+.lang-btn:hover:not(.active) { border-color: var(--bosque); color: var(--bosque) }
+
 @media (max-width: 640px) {
   nav { padding: 1rem 1.5rem }
   .nav-links { display: none }
